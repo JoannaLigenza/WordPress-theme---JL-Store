@@ -4,4 +4,14 @@
 	}
 }
 
+// Extends
+%wrapper {
+    width: 100%;
+    max-width: $theme-width;
+    margin: 0 auto;
+}
+
+%link-no-decoration {
+    text-decoration: none;
+}
 

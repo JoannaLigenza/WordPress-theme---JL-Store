@@ -1,0 +1,28 @@
+.main-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.wrapper {
+    @extend %wrapper;
+
+    &--small {
+        @extend %wrapper;
+        max-width: $theme-small-width;
+    }
+}
+
+.hide_on_mobile {
+    display: none;
+    @include mediaQuery($brkp-large) {
+        display: block;
+    }
+}
+
+.hide_on_desktop {
+    @include mediaQuery($brkp-large) {
+        display: none;
+    }
+}

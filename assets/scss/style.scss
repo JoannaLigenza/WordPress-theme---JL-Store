@@ -16,5 +16,29 @@ Tags: blog, one-column, two-columns, three-columns, right-sidebar, left-sidebar,
 */
 
 
+/***************************
+* Variables and mixins
+****************************/
 
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+
+/***************************
+* Custom styles
+****************************/
+
+@import 'base/reset';
+@import 'base/fonts';
+@import 'base/normalize';
+@import 'base/typography';
+
+
+/***************************
+* Layout
+****************************/
+
+@import 'layout/main-styles';
+@import 'layout/header';
+@import 'layout/footer';
 
