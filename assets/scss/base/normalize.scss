@@ -1,0 +1,156 @@
+html {
+    height: 100%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $primary-font-family;
+    font-size: 1.6rem;
+    font-weight: $font-regular;
+    height: 100%;
+    color: $color-black;
+}
+
+div, main, section, aside, ul, ol, li, header, nav, article, a, span, h1, h2, h3, h4, h5, h6, p, form, input, textarea {
+    box-sizing: border-box;
+    font-family: $primary-font-family;
+    word-break: break-word;
+}
+
+
+/***************************
+***  Links  ***
+****************************/
+
+a {
+    color: $color-black;
+    cursor: pointer;
+
+    &:hover:focus {
+        outline: none;
+    }
+}
+
+
+/***************************
+***  Buttons  ***
+****************************/
+
+button {
+    &:focus {
+        outline: 1px solid $color-black;
+    }
+
+    &:hover:focus {
+        outline: none;
+    }
+}
+
+
+/***************************
+***  iframe  ***
+****************************/
+
+iframe { 
+    border: none;
+}
+
+
+/***************************
+***  Lists  ***
+****************************/
+
+ul li {
+    list-style-type: disc;
+    padding: 3px 0;
+}
+
+ol li {
+    list-style-type: decimal;
+    padding: 3px 0;
+}
+
+/***************************
+***  Inputs  ***
+****************************/
+
+input,
+textarea {
+    padding: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: $color-middle-gray;
+    }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing:content-box;
+    padding: 0;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    padding: 10px 35px;
+}
+
+
+/***************************
+***  Images ***
+****************************/
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/***************************
+***  Code ***
+****************************/
+
+pre {
+    max-width: 100%;
+    background-color: $color-light-gray;
+    overflow: auto;
+    padding: 10px;
+    word-break: keep-all;
+}
+
+code {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+/***************************
+***  Quotes ***
+****************************/
+
+blockquote {
+    margin: 15px 60px;
+}
+
+cite {
+    font-style: italic;
+}
+
+/***************************
+***  Table ***
+****************************/
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid $color-light-gray;
+  padding: 1rem;
+  text-align: left;
+}
+
