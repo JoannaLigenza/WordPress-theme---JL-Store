@@ -90,7 +90,7 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   height: 100%;
-  color: #000000;
+  color: #2B2B2B;
 }
 
 div, main, section, aside, ul, ol, li, header, nav, article, a, span, h1, h2, h3, h4, h5, h6, p, form, input, textarea {
@@ -103,7 +103,7 @@ div, main, section, aside, ul, ol, li, header, nav, article, a, span, h1, h2, h3
 ***  Links  ***
 ****************************/
 a {
-  color: #000000;
+  color: #2B2B2B;
   cursor: pointer;
 }
 a:hover:focus {
@@ -114,7 +114,7 @@ a:hover:focus {
 ***  Buttons  ***
 ****************************/
 button:focus {
-  outline: 1px solid #000000;
+  outline: 1px solid #2B2B2B;
 }
 button:hover:focus {
   outline: none;
@@ -315,6 +315,47 @@ p, span, a {
 /***************************
 * Layout
 ****************************/
+form {
+  width: 100%;
+  position: relative;
+}
+
+form[role=search] input[type=search] {
+  width: 100%;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+  padding: 10px 80px 10px 20px;
+  background-color: #FFFFFF;
+  color: #A8A8A8;
+  border: none;
+  border-radius: 10px;
+}
+form[role=search] input[type=search]::placeholder {
+  color: #A8A8A8;
+}
+form[role=search] button[type=submit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 100%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  form[role=search] button[type=submit] {
+    width: 60px;
+    height: 100%;
+  }
+}
+
+/***************************
+* Layout
+****************************/
 .main-container {
   height: 100%;
   display: flex;
@@ -367,6 +408,34 @@ p, span, a {
 }
 .header .logo-container__col {
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.header .logo-container .hamburger-menu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  cursor: pointer;
+}
+@media screen and (min-width: 992px) {
+  .header .logo-container .hamburger-menu {
+    display: none;
+  }
+}
+.header .logo-container .hamburger-menu__line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #2B2B2B;
+  margin: 3px 0;
+}
+.header .logo-container form[role=search] {
+  max-width: 300px;
+  transition: 0.3s;
 }
 .header .logo-container .logo {
   width: 180px;
@@ -386,6 +455,13 @@ p, span, a {
   display: block;
   margin: 0 auto;
 }
+.header .logo-container .icons-wrapper {
+  justify-content: flex-end;
+  gap: 50px;
+}
+.header .logo-container .icons-wrapper .icon-container {
+  padding: 10px;
+}
 .header .menu-container a, .header .menu-container span {
   color: inherit;
 }
@@ -397,6 +473,7 @@ p, span, a {
   .header .menu-container .menu {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 .header .menu-container .menu .menu-item {
@@ -420,6 +497,12 @@ p, span, a {
     padding: 10px 30px;
   }
 }
+@media screen and (min-width: 992px) {
+  .header .menu-container .menu .menu-item a:hover {
+    background-color: var(--menu_hover_bgcolor);
+    transition: 0.3s;
+  }
+}
 .header .menu-container .menu .menu-item .menu-item-plus {
   display: none;
 }
@@ -432,15 +515,25 @@ p, span, a {
     padding: 0;
   }
 }
+.header .menu-container .menu .menu-item .sub-menu .menu-item a {
+  padding: 10px 15px;
+}
 @media screen and (min-width: 992px) {
   .header .menu-container .menu .menu-item .sub-menu .menu-item a {
     line-height: 1.2em;
-    border-bottom: 2px solid #EBEBEB;
+    border-bottom: 2px solid var(--menu_font_color);
+    transition: 0.3s;
   }
 }
+.header .menu-container .menu .menu-item .sub-menu .menu-item .sub-menu a {
+  padding: 10px 15px 10px 30px;
+}
+.header .menu-container .menu .menu-item .sub-menu .menu-item .sub-menu .sub-menu a {
+  padding: 10px 15px 10px 45px;
+}
 @media screen and (min-width: 992px) {
-  .header .menu-container .menu .menu-item .sub-menu .menu-item a:hover {
-    background-color: var(--menu_hover_background_color);
+  .header .menu-container .menu > .menu-item > a {
+    border-radius: 5px;
   }
 }
 .header .menu-container .menu .menu-item-has-children {
@@ -470,9 +563,11 @@ p, span, a {
   .header .menu-container .menu > .menu-item-has-children > .sub-menu {
     position: absolute;
     z-index: 90;
-    background-color: #FFFFFF;
     width: 300px;
     box-shadow: 0px 5px 14px 0px #EBEBEB;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
   }
 }
 

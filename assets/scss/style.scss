@@ -38,6 +38,13 @@ Tags: blog, one-column, two-columns, three-columns, right-sidebar, left-sidebar,
 * Layout
 ****************************/
 
+@import 'components/searchform';
+
+
+/***************************
+* Layout
+****************************/
+
 @import 'layout/main-styles';
 @import 'layout/header';
 @import 'layout/footer';

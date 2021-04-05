@@ -20,7 +20,14 @@
                 } ?>
             </div>
             <div class="logo-container wrapper">
-                <div class="logo-container__col"></div>
+                <div class="logo-container__col">
+                    <div class="hamburger-menu">
+                        <span class="hamburger-menu__line"></span>
+                        <span class="hamburger-menu__line"></span>
+                        <span class="hamburger-menu__line"></span>
+                    </div>
+                    <?php get_search_form() ?>
+                </div>
                 <?php if ( has_custom_logo() ) : ?>
                 <div class="logo-container__col">
                     <div class="logo">
@@ -28,7 +35,29 @@
                     </div>
                 </div>
                 <?php endif; ?>
-                <div class="logo-container__col"></div>
+                <div class="logo-container__col icons-wrapper">
+                    <?php if( true ) : ?>
+                        <a href="#" class="icon-link">
+                            <div class="icon-container">
+                                <img src="<?php echo get_theme_file_uri() . '/assets/images/phone-icon.svg' ?>" alt="Phone Icon">
+                            </div>
+                        
+                    <?php endif; ?>
+                    <?php if( true ) : ?>
+                        <a href="#" class="icon-link">
+                            <div class="icon-container">
+                                <img src="<?php echo get_theme_file_uri() . '/assets/images/user-icon.svg' ?>" alt="User Icon">
+                            </div>
+                        </a>
+                    <?php endif; ?>
+                    <?php if( true ) : ?>
+                        <a href="#" class="icon-link">
+                            <div class="icon-container">
+                                <img src="<?php echo get_theme_file_uri() . '/assets/images/cart-icon.svg' ?>" alt="Cart Icon">
+                            </div>
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="menu-container">
                 <nav class="nav-menu nav-menu--header wrapper" aria-labelledby="primary-navigation">

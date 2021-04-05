@@ -4,6 +4,20 @@
 	}
 }
 
+@mixin desktop-hidden($display_mobile) {
+    display: $display_mobile;
+    @include mediaQuery($brkp-large) {
+        display: none;
+    }
+}
+
+
+// Functions
+@function rgba-color($color, $opacity) {
+  	@return rgba(red($color), green($color), blue($color), $opacity);
+}
+
+
 // Extends
 %wrapper {
     width: 100%;
@@ -14,4 +28,6 @@
 %link-no-decoration {
     text-decoration: none;
 }
+
+
 

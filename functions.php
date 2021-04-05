@@ -22,7 +22,7 @@ function jlstore_setup() {
     add_theme_support( 'title-tag' );
 
     // Add custom background color
-    add_theme_support( 'custom-background', array( 'default-color' => 'fff' ) );
+    add_theme_support( 'custom-background', array( 'default-color' => '000000' ) );
 
     // Include post thumbnails
     add_theme_support( 'post-thumbnails' );
@@ -91,7 +91,6 @@ function jlstore_set_custom_header() {
         'default-image' => get_template_directory_uri() . '/assets/images/winter.jpg',
         // Display the header text along with the image
         'header-text'   => true,
-        // Header text color default
         'default-text-color' => 'ffffff',
     );
     add_theme_support( 'custom-header', $header_info );
@@ -109,215 +108,7 @@ function jlstore_set_custom_header() {
 add_action( 'after_setup_theme', 'jlstore_set_custom_header' );
 
 
-// Include custom sections in customizer - all the sections, settings, and controls will be added here
-function jlstore_customize_register( $wp_customize ) {
-    // Adding settings - front page
-    $wp_customize->add_setting( 'display_top_bar_mobile' , array(
-        'default'   => true,
-        'transport' => 'refresh',                                   // this will refresh customizer's preview window when changes are made
-        'type'      => 'theme_mod',                                 // this is setted for themes, and 'theme_mod' is default setting, so it's optional in themes
-        'sanitize_callback' => 'jlstore_sanitize_checkbox',         // this is WordPress sanitization function, to ensure that no unsafe data is stored in the database
-    ) );
-
-    $wp_customize->add_setting( 'display_top_bar_desktop' , array(
-        'default'   => true,
-        'transport' => 'refresh',
-        'type'      => 'theme_mod', 
-        'sanitize_callback' => 'jlstore_sanitize_checkbox',
-    ) );
-
-    $wp_customize->add_setting( 'top_bar_background_color' , array(
-        'default'   => '#EF9F8F',
-        'transport' => 'refresh',                       
-        'type'      => 'theme_mod',                     
-        'sanitize_callback' => 'sanitize_hex_color',
-    ) );
-
-    $wp_customize->add_setting( 'top_bar_font_color' , array(
-        'default'   => '#FFFFFF',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',
-    ) );
-
-    $wp_customize->add_setting( 'top_bar_text' , array(
-        'default'   => 'Check our promotions',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field',
-    ) );
-
-    $wp_customize->add_setting( 'top_bar_link' , array(
-        'default'   => '',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'esc_url_raw',
-    ) );
-
-    $wp_customize->add_setting( 'menu_background_color' , array(
-        'default'   => '#A8C5FF',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_hex_color',
-    ) );
-
-    $wp_customize->add_setting( 'menu_font_color' , array(
-        'default'   => '#1e73be',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
-    ) );
-
-    
-
-
-    // Adding panel
-    $wp_customize->add_panel( 'header', array(
-        'title' => __( 'Header', 'jlstore' ),
-        'priority' => 40, // Mixed with top-level-section hierarchy.
-    ) );
-
-    $wp_customize->add_panel( 'appearance', array(
-        'title' => __( 'Appearance Settings', 'jlstore' ),
-        // 'description' => $description, // Include html tags such as <p>.
-        'priority' => 50,
-    ) );
-
-    // Adding sections
-    $wp_customize->add_section( 'header_image' , array(
-        'title'      => __( 'Header Image', 'jlstore' ),
-        'panel' => 'header',
-        'priority'   => 50,
-    ) );
-
-    $wp_customize->add_section( 'header_top_bar' , array(
-        'title'      => __( 'Header Top Bar', 'jlstore' ),
-        'panel' => 'header',
-        'priority'   => 50,
-    ) );
-
-    $wp_customize->add_section( 'colors' , array(
-        'title'      => __( 'Colors', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 10,
-    ) );
-
-    $wp_customize->add_section( 'background_image' , array(
-        'title'      => __( 'Background image', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 20,
-    ) );
-
-    $wp_customize->add_section( 'front-page-layout' , array(
-        'title'      => __( 'Front Page Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 30,
-    ) );
-
-    $wp_customize->add_section( 'single-post-layout' , array(
-        'title'      => __( 'Single Post Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 40,
-    ) );
-
-    $wp_customize->add_section( 'single-page-layout' , array(
-        'title'      => __( 'Single Page Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 50,
-    ) );
-
-    $wp_customize->add_section( 'archive-layout' , array(
-        'title'      => __( 'Archive Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 60,
-    ) );
-
-    $wp_customize->add_section( 'footer' , array(
-        'title'      => __( 'Footer', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 70,
-    ) );
-
-    // Adding controls - main site
-    $wp_customize->add_control( 'display_top_bar_mobile', array(
-        'label'      => __( 'Display Top Bar on Mobile', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_mobile',
-        'type'       => 'checkbox'
-    ) );
-
-    $wp_customize->add_control( 'display_top_bar_desktop', array(
-        'label'      => __( 'Display Top Bar on Desktop', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_desktop',
-        'type'       => 'checkbox'
-    ) );
-
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'top_bar_background_color', array(
-        'label'      => __( 'Background color', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_mobile',
-    ) ) );
-
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'top_bar_font_color', array(
-        'label'      => __( 'Font color', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_mobile',
-    ) ) );
-
-    $wp_customize->add_control( 'top_bar_text', array(
-        'label'      => __( 'Top Bar Text', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'top_bar_text',
-        'type'       => 'text'
-    ) );
-
-    $wp_customize->add_control( 'top_bar_link', array(
-        'label'      => __( 'Top Bar link', 'jlstore' ),
-        'section'    => 'header_top_bar',
-        'settings'   => 'top_bar_link',
-        'type'       => 'url'
-    ) );
-
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'menu_background_color', array(
-        'label'      => __( 'Primary color', 'jlstore' ),
-        'section'    => 'colors',
-        'settings'   => 'menu_background_color',
-        // 'type'       => ''                       // do not set type for color picker
-    ) ) );
-
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'menu_font_color', array(
-        'label'      => __( 'Menu font color', 'jlstore' ),
-        'section'    => 'colors',
-        'settings'   => 'menu_font_color',
-        // 'type'       => ''                       // do not set type for color picker
-    ) ) );
-
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_hover_color', array(
-        'label'      => __( 'Secondary color', 'jlstore' ),
-        'section'    => 'colors',
-        'settings'   => 'link_hover_color',
-        // 'type'       => ''                       // do not set type for color picker
-    ) ) );
-
-    
-
-}
-add_action( 'customize_register', 'jlstore_customize_register' );
-
-
-// sanitize callback functions for settings
-function jlstore_sanitize_checkbox( $checked ) {
-    return ( ( isset( $checked ) && true == $checked ) ? true : false );
-}
-
-function jlstore_sanitize_radio( $input, $setting ) {
-    // Ensure input is a slug
-    $input = sanitize_key( $input );
-    
-    // Get list of choices from the control associated with the setting.
-    $choices = $setting->manager->get_control( $setting->id )->choices;
-    
-    // If the input is a valid key, return it; otherwise, return the default.
-    return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
-}
+require_once( 'inc/customize.php' );
 
 
 // Register sidebars
@@ -345,13 +136,18 @@ add_action( 'widgets_init', 'jlstore_widgets_init' );
 
 // Pass PHP variables to CSS and add custom styles
 function jlstore_set_css_variables() {
-    $colors = get_field( 'theme_colors', 'option' );
     ?>
         <style>
             :root {
                 --display_top_bar_mobile: <?php echo get_theme_mod( 'display_top_bar_mobile', true ) ? "block" : 'none' ?>;
                 --display_top_bar_desktop: <?php echo get_theme_mod( 'display_top_bar_desktop', true ) ? "block" : 'none' ?>;
-                --menu_hover_background_color: "#FFFFFF";
+                --top_bar_bgcolor: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
+                --top_bar_font_color: <?php echo get_theme_mod( 'top_bar_font_color', '#FFFFFF' ) ?>;
+                --menu_bgcolor: <?php echo get_theme_mod( 'menu_background_color', '#EF9F8F' ) ?>;
+                --menu_font_color: <?php echo get_theme_mod( 'menu_font_color', '#1e73be' ) ?>;
+                --menu_hover_bgcolor: <?php echo get_theme_mod( 'menu_hover_color', '#F9C1BB' ) ?>;
+                --theme_primary_color: <?php echo get_theme_mod( 'primary_color', '#EF9F8F' ) ?>;
+                --theme_secondary_color: <?php echo get_theme_mod( 'secondary_color', '#F9E4E1' ) ?>;
             }
             .top-bar {
                 background-color: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
