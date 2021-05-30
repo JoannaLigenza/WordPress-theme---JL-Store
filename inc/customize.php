@@ -6,7 +6,7 @@ function jlstore_customize_register( $wp_customize ) {
     * SETTINGS
     */
 
-    // Home Page
+    //----- Top Bar
     $wp_customize->add_setting( 'display_top_bar_mobile' , array(
         'default'   => true,
         'transport' => 'refresh',                                   // this will refresh customizer's preview window when changes are made
@@ -22,7 +22,7 @@ function jlstore_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'top_bar_background_color' , array(
-        'default'   => '#EF9F8F',
+        'default'   => '#C3A990',
         'transport' => 'refresh',                       
         'type'      => 'theme_mod',                     
         'sanitize_callback' => 'sanitize_hex_color',
@@ -31,8 +31,8 @@ function jlstore_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'top_bar_font_color' , array(
         'default'   => '#FFFFFF',
         'transport' => 'refresh',
+        'type'      => 'theme_mod', 
         'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
     $wp_customize->add_setting( 'top_bar_text' , array(
@@ -47,12 +47,13 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_callback' => 'esc_url_raw',
     ) );
 
-    //-----
+    //----- Menu
 
     $wp_customize->add_setting( 'menu_background_color' , array(
-        'default'   => '#EF9F8F',
+        'default'   => '#C3A990',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
     ) );
 
     $wp_customize->add_setting( 'menu_font_color' , array(
@@ -63,26 +64,36 @@ function jlstore_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'menu_hover_color' , array(
-        'default'   => '#F9C1BB',
+        'default'   => '#D5C2AA',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
     ) );
 
-    //-----
+    //----- General
 
     $wp_customize->add_setting( 'primary_color' , array(
-        'default'   => '#EF9F8F',
+        'default'   => '#F8F3F0',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
     ) );
 
     $wp_customize->add_setting( 'secondary_color' , array(
         'default'   => '#F9E4E1',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
     ) );
 
-    
+    $wp_customize->add_setting( 'display_decorations' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'type'      => 'theme_mod', 
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    //-----
 
 
     /*
@@ -118,16 +129,22 @@ function jlstore_customize_register( $wp_customize ) {
         'priority'   => 50,
     ) );
 
+    $wp_customize->add_section( 'general' , array(
+        'title'      => __( 'General Settings', 'jlstore' ),
+        'panel' => 'appearance',
+        'priority'   => 10,
+    ) );
+
     $wp_customize->add_section( 'colors' , array(
         'title'      => __( 'Colors', 'jlstore' ),
         'panel' => 'appearance',
-        'priority'   => 10,
+        'priority'   => 20,
     ) );
 
     $wp_customize->add_section( 'background_image' , array(
         'title'      => __( 'Background image', 'jlstore' ),
         'panel' => 'appearance',
-        'priority'   => 20,
+        'priority'   => 30,
     ) );
 
     $wp_customize->add_section( 'front-page-layout' , array(
@@ -164,7 +181,7 @@ function jlstore_customize_register( $wp_customize ) {
     * CONTROLS
     */
 
-    // Home Page
+    //----- Top Bar
     $wp_customize->add_control( 'display_top_bar_mobile', array(
         'label'      => __( 'Display Top Bar on Mobile', 'jlstore' ),
         'section'    => 'header_top_bar',
@@ -182,13 +199,13 @@ function jlstore_customize_register( $wp_customize ) {
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'top_bar_background_color', array(
         'label'      => __( 'Background color', 'jlstore' ),
         'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_mobile',
+        'settings'   => 'top_bar_background_color',
     ) ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'top_bar_font_color', array(
         'label'      => __( 'Font color', 'jlstore' ),
         'section'    => 'header_top_bar',
-        'settings'   => 'display_top_bar_mobile',
+        'settings'   => 'top_bar_font_color',
     ) ) );
 
     $wp_customize->add_control( 'top_bar_text', array(
@@ -205,7 +222,7 @@ function jlstore_customize_register( $wp_customize ) {
         'type'       => 'url'
     ) );
 
-    //-----
+    //----- Menu
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'menu_background_color', array(
         'label'      => __( 'Menu background color', 'jlstore' ),
@@ -225,7 +242,7 @@ function jlstore_customize_register( $wp_customize ) {
         'settings'   => 'menu_hover_color',
     ) ) );
 
-    //-----
+    //----- General
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_color', array(
         'label'      => __( 'Primary color', 'jlstore' ),
@@ -239,6 +256,12 @@ function jlstore_customize_register( $wp_customize ) {
         'settings'   => 'secondary_color',
     ) ) );
 
+    $wp_customize->add_control( 'display_decorations', array(
+        'label'      => __( 'Display Decorations', 'jlstore' ),
+        'section'    => 'general',
+        'settings'   => 'display_decorations',
+        'type'       => 'checkbox'
+    ) );
 
     
 

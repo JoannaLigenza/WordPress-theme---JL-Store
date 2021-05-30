@@ -141,25 +141,14 @@ function jlstore_set_css_variables() {
             :root {
                 --display_top_bar_mobile: <?php echo get_theme_mod( 'display_top_bar_mobile', true ) ? "block" : 'none' ?>;
                 --display_top_bar_desktop: <?php echo get_theme_mod( 'display_top_bar_desktop', true ) ? "block" : 'none' ?>;
-                --top_bar_bgcolor: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
+                --top_bar_bgcolor: <?php echo get_theme_mod( 'top_bar_background_color', '#C3A990' ) ?>;
                 --top_bar_font_color: <?php echo get_theme_mod( 'top_bar_font_color', '#FFFFFF' ) ?>;
-                --menu_bgcolor: <?php echo get_theme_mod( 'menu_background_color', '#EF9F8F' ) ?>;
-                --menu_font_color: <?php echo get_theme_mod( 'menu_font_color', '#1e73be' ) ?>;
-                --menu_hover_bgcolor: <?php echo get_theme_mod( 'menu_hover_color', '#F9C1BB' ) ?>;
-                --theme_primary_color: <?php echo get_theme_mod( 'primary_color', '#EF9F8F' ) ?>;
-                --theme_secondary_color: <?php echo get_theme_mod( 'secondary_color', '#F9E4E1' ) ?>;
-            }
-            .top-bar {
-                background-color: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
-                color: <?php echo get_theme_mod( 'top_bar_font_color', '#FFFFFF' ) ?>;
-            }
-            .menu-container {
-                background-color: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
-                color: <?php echo get_theme_mod( 'top_bar_font_color', '#FFFFFF' ) ?>;
-            }
-            .sub-menu, .menu-item {
-                background-color: <?php echo get_theme_mod( 'top_bar_background_color', '#EF9F8F' ) ?>;
-                color: <?php echo get_theme_mod( 'top_bar_font_color', '#FFFFFF' ) ?>;
+                --header_bgcolor: <?php echo get_theme_mod( 'header_background_color', '#F8F3F0' ) ?>;
+                --menu_bgcolor: <?php echo get_theme_mod( 'menu_background_color', '#C3A990' ) ?>;
+                --menu_font_color: <?php echo get_theme_mod( 'menu_font_color', '#FFFFFF' ) ?>;
+                --menu_hover_bgcolor: <?php echo get_theme_mod( 'menu_hover_color', '#D5C2AA' ) ?>;
+                --theme_primary_color: <?php echo get_theme_mod( 'primary_color', '#C3A990' ) ?>;
+                --theme_secondary_color: <?php echo get_theme_mod( 'secondary_color', '#F8F3F0' ) ?>;
             }
         </style>
     <?php

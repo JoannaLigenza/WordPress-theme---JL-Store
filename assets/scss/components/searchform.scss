@@ -13,7 +13,7 @@ form[role="search"] {
         background-color: $color-white;
         color: $color-middle-gray;
         border: none;
-        border-radius: 10px;
+        border-radius: 3px;
 
         &::placeholder {
             color: $color-middle-gray;
@@ -24,14 +24,14 @@ form[role="search"] {
         position: absolute;
         top: 0;
         right: 0;
-        // background-color: $primary-color;
+        background-color: var(--theme_primary_color);
         width: 56px;
         height: 100%;
         border: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 10px;
+        border-radius: 3px;
         cursor: pointer;
         @include mediaQuery($brkp-medium) {
             width: 60px;
