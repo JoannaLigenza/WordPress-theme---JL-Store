@@ -26,6 +26,7 @@
     .logo-container {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         background-color: var(--header_bgcolor);
         padding: 10px 20px;
         @include mediaQuery($brkp-large) {
@@ -40,16 +41,27 @@
             display: flex;
             align-items: center;
             gap: 30px;
+
+            &:first-child {
+                gap: 10px;
+                @include mediaQuery($brkp-xsmall) {
+                    gap: 30px;
+                }
+            }
         }
 
         .hamburger-menu {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             @include desktop-hidden(flex);
             flex-direction: column;
             justify-content: center;
             padding: 5px;
             cursor: pointer;
+            @include mediaQuery($brkp-xsmall) {
+                width: 40px;
+                height: 40px;
+            }
             
 
             &__line {
@@ -63,6 +75,15 @@
 
         .mobile-search-icon {
             cursor: pointer;
+            width: 20px;
+            height: 16px;
+            @include mediaQuery($brkp-xsmall) {
+                width: 31px;
+                height: 27px;
+            }
+            @include mediaQuery($brkp-large) {
+                display: none;
+            }
         }
 
         .header-search-form {
@@ -112,9 +133,13 @@
         }
 
         .logo {
-            width: 180px;
-            height: 60px;
+            width: 100px;
+            height: 40px;
             margin: 0 auto;
+            @include mediaQuery($brkp-xsmall) {
+                width: 180px;
+                height: 60px;
+            }
             @include mediaQuery($brkp-large) {
                 width: 350px;
                 height: 100px;
@@ -148,13 +173,19 @@
                 .phone-icon,
                 .user-icon,
                 .cart-icon {
-                    width: 25px;
-                    height: 25px;
+                    width: 15px;
+                    height: 15px;
                     background-color: var(--theme_primary_color);
                     -webkit-mask-repeat: no-repeat;
-                    -webkit-mask-size: 25px;
+                    -webkit-mask-size: 15px;
                     mask-repeat: no-repeat;
-                    mask-size: 25px;
+                    mask-size: 15px;
+                    @include mediaQuery($brkp-xsmall) {
+                        width: 25px;
+                        height: 25px;
+                        -webkit-mask-size: 25px;
+                        mask-size: 25px;
+                    }
                     @include mediaQuery($brkp-large) {
                         width: 35px;
                         height: 35px;
@@ -185,12 +216,20 @@
         width: 100%;
         background-color: var(--menu_bgcolor);
         color: var(--menu_font_color);
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        transition-duration: 0.4s;
         @include mediaQuery($brkp-large) {
             width: 95%;
+            height: auto;
             max-width: $theme-small-width;
             margin: 0 auto;
             position: relative;
             top: -26px;
+            left: 0;
             border-radius: 2px;
             position: relative;
             z-index: 0;
@@ -214,6 +253,43 @@
 
         a, span {
             color: inherit;
+        }
+
+        &--opened {
+            left: 0;
+            transition-duration: 0.4s;
+            overflow: auto;
+        }
+    }
+
+    .mobile-top-bar {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        @include mediaQuery($brkp-large) {
+            display: none;
+        }
+
+        .mobile-close-button {
+            transform: rotate(-90deg);
+            padding: 5px 10px;
+            cursor: pointer;
+            width: 17px;
+            height: 17px;
+            position: relative;
+            left: 0;
+            transition-duration: 0.4s;
+            @include mediaQuery($brkp-large) {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &:hover {
+            .mobile-close-button {
+                left: -5px;
+                transition-duration: 0.4s;
+            }
         }
     }
 
@@ -278,20 +354,6 @@
                             transition: 0.3s;
                         }
                     }
-
-                    // sub-menu 3 level
-                    .sub-menu {
-                        a {
-                            padding: 10px 15px 10px 30px;
-                        }
-
-                        // sub-menu 4 level
-                        .sub-menu {
-                            a {
-                                padding: 10px 15px 10px 45px;
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -315,7 +377,7 @@
                 font-size: 2rem;
                 padding: 0 20px;
                 cursor: pointer;
-                color: red;
+                color: var(--menu_font_color);
                 @include mediaQuery($brkp-large) {
                     display: none;
                 }

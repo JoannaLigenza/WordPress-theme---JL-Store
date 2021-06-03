@@ -22,7 +22,7 @@ function jlstore_setup() {
     add_theme_support( 'title-tag' );
 
     // Add custom background color
-    add_theme_support( 'custom-background', array( 'default-color' => '000000' ) );
+    add_theme_support( 'custom-background', array( 'default-color' => '#FFFFFF' ) );
 
     // Include post thumbnails
     add_theme_support( 'post-thumbnails' );
@@ -139,6 +139,7 @@ function jlstore_set_css_variables() {
     ?>
         <style>
             :root {
+                --bgcolor: <?php echo get_background_color() ?>;
                 --display_top_bar_mobile: <?php echo get_theme_mod( 'display_top_bar_mobile', true ) ? "block" : 'none' ?>;
                 --display_top_bar_desktop: <?php echo get_theme_mod( 'display_top_bar_desktop', true ) ? "block" : 'none' ?>;
                 --top_bar_bgcolor: <?php echo get_theme_mod( 'top_bar_background_color', '#C3A990' ) ?>;

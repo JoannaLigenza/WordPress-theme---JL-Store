@@ -1,4 +1,8 @@
 <?php
+$display_searchbox = get_theme_mod( 'display_header_searchbox', true );
+$display_contact_icon = get_theme_mod( 'display_header_icon_1', true );
+$display_account_icon = get_theme_mod( 'display_header_icon_2', true );
+$display_cart_icon = get_theme_mod( 'display_header_icon_3', true );
 $display_decorations = get_theme_mod( 'display_decorations', true ) ? 'menu-container--decorations' : null;
 $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
 ?>
@@ -32,11 +36,13 @@ $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
                             <span class="hamburger-menu__line"></span>
                             <span class="hamburger-menu__line"></span>
                         </div>
+                        <?php if( $display_searchbox ) : ?>
                         <img src="<?php echo esc_url( get_theme_file_uri().'/assets/images/search-icon-black.svg' ) ?>" alt="search-icon" class="mobile-search-icon">
                         <div class="header-search-form">
                             <?php get_search_form() ?>
                             <div class="close-button js-hide-searchform"></div>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <?php if ( has_custom_logo() ) : ?>
                     <div class="logo-container__col">
@@ -46,21 +52,21 @@ $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
                     </div>
                     <?php endif; ?>
                     <div class="logo-container__col icons-wrapper">
-                        <?php if( true ) : ?>
+                        <?php if( $display_contact_icon ) : ?>
                             <a href="#" class="icon-link">
                                 <div class="icon-container">
                                     <div class="phone-icon"></div>
                                 </div>
                             
                         <?php endif; ?>
-                        <?php if( true ) : ?>
+                        <?php if( $display_account_icon ) : ?>
                             <a href="#" class="icon-link">
                                 <div class="icon-container">
                                     <div class="user-icon"></div>
                                 </div>
                             </a>
                         <?php endif; ?>
-                        <?php if( true ) : ?>
+                        <?php if( $display_cart_icon ) : ?>
                             <a href="#" class="icon-link">
                                 <div class="icon-container">
                                     <div class="cart-icon"></div>
@@ -71,6 +77,9 @@ $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
                 </div>
             </div>
             <div class="menu-container <?php echo $display_decorations ?> <?php echo $full_menu ?>">
+                <div class="mobile-top-bar desktop-hidden">
+                     <img src="<?php echo esc_attr( get_theme_file_uri().'/assets/images/arrow-up-black.svg' ) ?>" alt="go back icon" class="mobile-close-button">
+                </div>
                 <nav class="nav-menu nav-menu--header wrapper" aria-labelledby="primary-navigation">
                     <?php 
                     wp_nav_menu(

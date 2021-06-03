@@ -30,5 +30,46 @@ jQuery(document).ready(function($) {
     }
     jlstore_show_searchform();
 
+    function jlstoreOpenSubmenuOnMobile() {
+        const openButton = $('.menu-item-plus');
+        if (openButton.length > 0) {
+            openButton.on('click', function() {
+                const text = $(this).text();
+                $(this).next().animate({ height: "toggle" }, 200);
+                $(this).closest('.menu-item').toggleClass('menu-item-opened');
+                if (text === '+') {
+                    $(this).text('-');
+                    $(this).css({ right: '7px' });
+                } else {
+                    $(this).text('+');
+                    $(this).css({ right: '' });
+                }
+            });
+        }
+    }
+    jlstoreOpenSubmenuOnMobile();
+
+    function jlstoreOpenMobileMenu() {
+        const hamburgerMenu = $('.hamburger-menu');
+        if (hamburgerMenu.length > 0) {
+            const menuContainer = $('.menu-container');
+            hamburgerMenu.on('click', function() {
+                menuContainer.addClass('menu-container--opened');
+            });
+        }
+    }
+    jlstoreOpenMobileMenu();
+
+    function jlstoreCloseMobileMenu() {
+        const closeButton = $('.mobile-close-button');
+        if (closeButton.length > 0) {
+            const menuContainer = $('.menu-container');
+            closeButton.on('click', function() {
+                menuContainer.removeClass('menu-container--opened');
+            });
+        }
+    }
+    jlstoreCloseMobileMenu();
+
 });
 

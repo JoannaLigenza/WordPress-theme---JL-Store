@@ -47,6 +47,32 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_callback' => 'esc_url_raw',
     ) );
 
+    //----- Header
+
+    $wp_customize->add_setting( 'display_header_searchbox' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_icon_1' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_icon_2' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_icon_3' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
     //----- Menu
 
     $wp_customize->add_setting( 'menu_background_color' , array(
@@ -60,14 +86,14 @@ function jlstore_customize_register( $wp_customize ) {
         'default'   => '#FFFFFF',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
+        'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
     $wp_customize->add_setting( 'menu_hover_color' , array(
         'default'   => '#D5C2AA',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
+        'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
     //----- General
@@ -76,14 +102,14 @@ function jlstore_customize_register( $wp_customize ) {
         'default'   => '#F8F3F0',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
+        'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
     $wp_customize->add_setting( 'secondary_color' , array(
         'default'   => '#F9E4E1',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_hex_color',
-        'sanitize_js_callback' => 'sanitize_hex_color',     // selective refresh is set for menu_font_color setting (in customizer.js), so it needs to sanitize data used by script
+        'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
     $wp_customize->add_setting( 'display_decorations' , array(
@@ -114,19 +140,25 @@ function jlstore_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'header_image' , array(
         'title'      => __( 'Header Image', 'jlstore' ),
         'panel' => 'header',
-        'priority'   => 50,
+        'priority'   => 10,
     ) );
 
     $wp_customize->add_section( 'header_top_bar' , array(
         'title'      => __( 'Header Top Bar', 'jlstore' ),
         'panel' => 'header',
-        'priority'   => 50,
+        'priority'   => 20,
+    ) );
+
+    $wp_customize->add_section( 'header_icons' , array(
+        'title'      => __( 'Header Content', 'jlstore' ),
+        'panel' => 'header',
+        'priority'   => 30,
     ) );
 
     $wp_customize->add_section( 'header_menu' , array(
         'title'      => __( 'Header Menu Layout', 'jlstore' ),
         'panel' => 'header',
-        'priority'   => 50,
+        'priority'   => 40,
     ) );
 
     $wp_customize->add_section( 'general' , array(
@@ -220,6 +252,36 @@ function jlstore_customize_register( $wp_customize ) {
         'section'    => 'header_top_bar',
         'settings'   => 'top_bar_link',
         'type'       => 'url'
+    ) );
+
+    //----- Header
+
+    $wp_customize->add_control( 'display_header_searchbox', array(
+        'label'      => __( 'Display Searchbox', 'jlstore' ),
+        'section'    => 'header_icons',
+        'settings'   => 'display_header_searchbox',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_icon_1', array(
+        'label'      => __( 'Display Contact Icon', 'jlstore' ),
+        'section'    => 'header_icons',
+        'settings'   => 'display_header_icon_1',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_icon_2', array(
+        'label'      => __( 'Display Account Icon', 'jlstore' ),
+        'section'    => 'header_icons',
+        'settings'   => 'display_header_icon_2',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_icon_3', array(
+        'label'      => __( 'Display Cart Icon', 'jlstore' ),
+        'section'    => 'header_icons',
+        'settings'   => 'display_header_icon_3',
+        'type'       => 'checkbox'
     ) );
 
     //----- Menu

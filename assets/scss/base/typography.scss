@@ -70,8 +70,8 @@ p {
 
 p, span, a {
     word-break: break-word;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
     font-weight: $font-regular;
     @include mediaQuery($brkp-medium) {
         font-size: 1.6rem;
