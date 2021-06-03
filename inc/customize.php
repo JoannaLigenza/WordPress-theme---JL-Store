@@ -49,6 +49,18 @@ function jlstore_customize_register( $wp_customize ) {
 
     //----- Header
 
+    $wp_customize->add_setting( 'display_header_image' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'header_image_text' , array(
+        'default'   => "Your Sample Text",
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
     $wp_customize->add_setting( 'display_header_searchbox' , array(
         'default'   => true,
         'transport' => 'refresh',
@@ -255,6 +267,20 @@ function jlstore_customize_register( $wp_customize ) {
     ) );
 
     //----- Header
+
+    $wp_customize->add_control( 'display_header_image', array(
+        'label'      => __( 'Display Header Image', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'display_header_image',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'header_image_text', array(
+        'label'      => __( 'Header Image Text', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'header_image_text',
+        'type'       => 'text'
+    ) );
 
     $wp_customize->add_control( 'display_header_searchbox', array(
         'label'      => __( 'Display Searchbox', 'jlstore' ),

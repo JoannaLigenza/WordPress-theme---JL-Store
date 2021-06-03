@@ -3,7 +3,8 @@ $display_searchbox = get_theme_mod( 'display_header_searchbox', true );
 $display_contact_icon = get_theme_mod( 'display_header_icon_1', true );
 $display_account_icon = get_theme_mod( 'display_header_icon_2', true );
 $display_cart_icon = get_theme_mod( 'display_header_icon_3', true );
-$display_decorations = get_theme_mod( 'display_decorations', true ) ? 'menu-container--decorations' : null;
+$display_header_image = get_theme_mod( 'display_header_image', true );
+$header_image_text = get_theme_mod( 'header_image_text', 'Your Sample Text' );
 $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
 ?>
 
@@ -28,7 +29,7 @@ $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
                     echo '<a href="'. esc_url( get_theme_mod( 'top_bar_link' ) ) .'">'.esc_html( get_theme_mod( 'top_bar_text', 'Check our promotions' ) ).'</a>';
                 } ?>
             </div>
-            <div class="header-logo">
+            <div class="header-content">
                 <div class="logo-container wrapper wrapper--small">
                     <div class="logo-container__col">
                         <div class="hamburger-menu">
@@ -75,23 +76,33 @@ $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
                         <?php endif; ?>
                     </div>
                 </div>
-            </div>
-            <div class="menu-container <?php echo $display_decorations ?> <?php echo $full_menu ?>">
-                <div class="mobile-top-bar desktop-hidden">
-                     <img src="<?php echo esc_attr( get_theme_file_uri().'/assets/images/arrow-up-black.svg' ) ?>" alt="go back icon" class="mobile-close-button">
+                <div class="menu-container">
+                    <div class="menu-wrapper <?php echo display_decorations( 'menu-wrapper--decorations' ) ?> <?php echo $full_menu ?>">
+                        <div class="mobile-top-bar desktop-hidden">
+                            <img src="<?php echo esc_attr( get_theme_file_uri().'/assets/images/arrow-up-black.svg' ) ?>" alt="go back icon" class="mobile-close-button">
+                        </div>
+                        <nav class="nav-menu nav-menu--header wrapper" aria-labelledby="primary-navigation">
+                            <?php 
+                            wp_nav_menu(
+                                array(
+                                    'theme_location'  => 'header-menu',
+                                    'container_class' => 'header-menu',
+                                    'depth'           => 4,
+                                    'after'           => '<span class="menu-item-plus">+</span>',
+                                )
+                            );
+                            ?>
+                        </nav>
+                    </div>
                 </div>
-                <nav class="nav-menu nav-menu--header wrapper" aria-labelledby="primary-navigation">
-                    <?php 
-                    wp_nav_menu(
-                        array(
-                            'theme_location'  => 'header-menu',
-                            'container_class' => 'header-menu',
-                            'depth'           => 4,
-                            'after'           => '<span class="menu-item-plus">+</span>',
-                        )
-                    );
-                    ?>
-                </nav>
             </div>
+            <?php if ( get_header_image() && $display_header_image ) :   // display header image url ?>
+            <div class="header-image">
+                <div class="header-image__shadow"></div>
+                <div class="header-custom-text wrapper wrapper--small <?php echo display_decorations( 'header-custom-text--decorations' ) ?>">
+                    <p><?php echo wp_kses_post( $header_image_text ) ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
         </header>
     

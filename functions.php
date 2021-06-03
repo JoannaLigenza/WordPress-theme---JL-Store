@@ -88,7 +88,7 @@ function jlstore_set_custom_header() {
         'height'        => 700,
         'flex-width'    => true,
         'flex-height'   => true,
-        'default-image' => get_template_directory_uri() . '/assets/images/winter.jpg',
+        'default-image' => get_template_directory_uri() . '/assets/images/header-image.jpg',
         // Display the header text along with the image
         'header-text'   => true,
         'default-text-color' => 'ffffff',
@@ -98,8 +98,8 @@ function jlstore_set_custom_header() {
     // register header(s)
     $header_images = array(
         'winter' => array(
-            'url'           => get_theme_file_uri() . '/inc/images/winter.jpg',
-            'thumbnail_url' => get_theme_file_uri() . '/inc/images/winter.jpg',
+            'url'           => get_theme_file_uri() . '/assets/images/header-image.jpg',
+            'thumbnail_url' => get_theme_file_uri() . '/assets/images/header-image-thumbnail.jpg',
             'description'   => 'Header image',
         ),
     );
@@ -150,8 +150,28 @@ function jlstore_set_css_variables() {
                 --menu_hover_bgcolor: <?php echo get_theme_mod( 'menu_hover_color', '#D5C2AA' ) ?>;
                 --theme_primary_color: <?php echo get_theme_mod( 'primary_color', '#C3A990' ) ?>;
                 --theme_secondary_color: <?php echo get_theme_mod( 'secondary_color', '#F8F3F0' ) ?>;
+                --header_image_url: url(<?php echo esc_url(get_custom_header()->url) ?>);
+            }
+
+            .header-image {
+                background-image: url(<?php echo esc_url(get_custom_header()->thumbnail_url) ?>);
+                
+            }
+            @media only screen and (min-width: 500px) {
+                .header-image {
+                    background-image: url(<?php echo esc_url(get_custom_header()->url) ?>);
+                }
             }
         </style>
     <?php
 }
 add_action('wp_head', 'jlstore_set_css_variables');
+
+function display_decorations($class) {
+    $display_decorations = get_theme_mod( 'display_decorations', true );
+    if ( $display_decorations ) {
+        return $class;
+    } else {
+        return null;
+    }
+}

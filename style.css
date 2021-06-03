@@ -1,5 +1,5 @@
 /*
-Theme Name: JL Store
+Theme Name: JL Store - Ecommerce & Blog
 Theme URI: https://github.com/JoannaLigenza/Wordpress-theme---JL-Best-Blog
 Author: JL-lovecoding
 Author URI: https://love-coding.pl/en
@@ -12,7 +12,7 @@ License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 Text Domain: jlstore
 Domain Path: /languages
-Tags: blog, one-column, two-columns, three-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 */
 /***************************
 * Variables and mixins
@@ -454,8 +454,9 @@ form[role=search] button[type=submit] {
 .header .top-bar a {
   color: inherit;
 }
-.header .header-logo {
+.header .header-content {
   background-color: var(--header_bgcolor);
+  position: relative;
 }
 .header .logo-container {
   display: flex;
@@ -519,16 +520,17 @@ form[role=search] button[type=submit] {
   cursor: pointer;
   width: 20px;
   height: 16px;
+  display: inline-block;
+}
+@media screen and (min-width: 992px) {
+  .header .logo-container .mobile-search-icon {
+    display: none;
+  }
 }
 @media screen and (min-width: 450px) {
   .header .logo-container .mobile-search-icon {
     width: 31px;
     height: 27px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .header .logo-container .mobile-search-icon {
-    display: none;
   }
 }
 .header .logo-container .header-search-form {
@@ -579,6 +581,7 @@ form[role=search] button[type=submit] {
   cursor: pointer;
   margin: 0 0 0 auto;
   position: relative;
+  display: static;
 }
 .header .logo-container .header-search-form .close-button:before, .header .logo-container .header-search-form .close-button:after {
   content: "";
@@ -694,6 +697,11 @@ form[role=search] button[type=submit] {
   mask-image: url("assets/images/cart-icon.svg");
 }
 .header .menu-container {
+  position: relative;
+  height: 1px;
+  z-index: 5;
+}
+.header .menu-wrapper {
   width: 100%;
   background-color: var(--menu_bgcolor);
   color: var(--menu_font_color);
@@ -705,19 +713,19 @@ form[role=search] button[type=submit] {
   transition-duration: 0.4s;
 }
 @media screen and (min-width: 992px) {
-  .header .menu-container {
+  .header .menu-wrapper {
     width: 95%;
     height: auto;
     max-width: 1680px;
     margin: 0 auto;
-    position: relative;
-    top: -26px;
-    left: 0;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 2px;
-    position: relative;
     z-index: 0;
   }
-  .header .menu-container--decorations:after {
+  .header .menu-wrapper--decorations:after {
     content: "";
     position: absolute;
     background: var(--theme_primary_color);
@@ -731,18 +739,18 @@ form[role=search] button[type=submit] {
     border-radius: 2px;
   }
 }
-.header .menu-container a, .header .menu-container span {
+.header .menu-wrapper a, .header .menu-wrapper span {
   color: inherit;
 }
-.header .menu-container--opened {
+.header .menu-wrapper--opened {
   left: 0;
   transition-duration: 0.4s;
   overflow: auto;
 }
 .header .mobile-top-bar {
   padding: 10px;
-  display: flex;
   align-items: center;
+  display: flex;
 }
 @media screen and (min-width: 992px) {
   .header .mobile-top-bar {
@@ -943,6 +951,117 @@ form[role=search] button[type=submit] {
   .header .full-menu .menu > .menu-item-has-children:hover > .sub-menu {
     display: flex;
   }
+}
+.header .header-image {
+  width: 100%;
+  height: auto;
+  min-height: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 30px 20px;
+}
+@media screen and (min-width: 450px) {
+  .header .header-image {
+    min-height: 75vw;
+  }
+}
+@media screen and (min-width: 576px) {
+  .header .header-image {
+    min-height: 50vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  .header .header-image {
+    min-height: 40vw;
+    max-height: 570px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header .header-image {
+    min-height: 30vw;
+    max-height: 570px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .header .header-image {
+    min-height: 570px;
+    max-height: 570px;
+  }
+}
+.header .header-image__shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 43, 43, 0.5);
+}
+.header .header-image .header-custom-text {
+  position: relative;
+}
+.header .header-image .header-custom-text p {
+  color: #FFFFFF;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  padding: 50px;
+}
+@media screen and (min-width: 576px) {
+  .header .header-image .header-custom-text p {
+    font-size: 3rem;
+    line-height: 4rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .header .header-image .header-custom-text p {
+    font-size: 4rem;
+    line-height: 5rem;
+    max-width: 80%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header .header-image .header-custom-text p {
+    font-size: 4rem;
+    line-height: 5rem;
+    max-width: 70%;
+  }
+}
+.header .header-image .header-custom-text--decorations p {
+  position: relative;
+}
+.header .header-image .header-custom-text--decorations p:before, .header .header-image .header-custom-text--decorations p:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid #FFFFFF;
+  transition-duration: 0.7s;
+}
+.header .header-image .header-custom-text--decorations p:before {
+  bottom: -10px;
+  left: -10px;
+}
+.header .header-image .header-custom-text--decorations p:after {
+  top: -10px;
+  right: -10px;
+}
+.header .header-image .header-custom-text--decorations p:hover:before {
+  bottom: 10px;
+  left: 10px;
+  transition-duration: 0.7s;
+}
+.header .header-image .header-custom-text--decorations p:hover:after {
+  top: 10px;
+  right: 10px;
+  transition-duration: 0.7s;
 }
 
 /*# sourceMappingURL=style.css.map */

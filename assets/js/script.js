@@ -52,9 +52,9 @@ jQuery(document).ready(function($) {
     function jlstoreOpenMobileMenu() {
         const hamburgerMenu = $('.hamburger-menu');
         if (hamburgerMenu.length > 0) {
-            const menuContainer = $('.menu-container');
+            const menuContainer = $('.menu-wrapper');
             hamburgerMenu.on('click', function() {
-                menuContainer.addClass('menu-container--opened');
+                menuContainer.addClass('menu-wrapper--opened');
             });
         }
     }
@@ -63,9 +63,9 @@ jQuery(document).ready(function($) {
     function jlstoreCloseMobileMenu() {
         const closeButton = $('.mobile-close-button');
         if (closeButton.length > 0) {
-            const menuContainer = $('.menu-container');
+            const menuContainer = $('.menu-wrapper');
             closeButton.on('click', function() {
-                menuContainer.removeClass('menu-container--opened');
+                menuContainer.removeClass('menu-wrapper--opened');
             });
         }
     }
