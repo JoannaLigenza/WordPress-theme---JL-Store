@@ -725,7 +725,7 @@ form[role=search] button[type=submit] {
     border-radius: 2px;
     z-index: 0;
   }
-  .header .menu-wrapper--decorations:after {
+  .header .menu-wrapper--decorations:before {
     content: "";
     position: absolute;
     background: var(--theme_primary_color);
