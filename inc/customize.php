@@ -49,8 +49,32 @@ function jlstore_customize_register( $wp_customize ) {
 
     //----- Header
 
-    $wp_customize->add_setting( 'display_header_image' , array(
+    $wp_customize->add_setting( 'display_header_image_home' , array(
         'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_image_single_post' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_image_single_page' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_image_archives' , array(
+        'default'   => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_checkbox',
+    ) );
+
+    $wp_customize->add_setting( 'display_header_image_shop' , array(
+        'default'   => false,
         'transport' => 'refresh',
         'sanitize_callback' => 'jlstore_sanitize_checkbox',
     ) );
@@ -268,10 +292,38 @@ function jlstore_customize_register( $wp_customize ) {
 
     //----- Header
 
-    $wp_customize->add_control( 'display_header_image', array(
-        'label'      => __( 'Display Header Image', 'jlstore' ),
+    $wp_customize->add_control( 'display_header_image_home', array(
+        'label'      => __( 'Display Header Image On Home Page', 'jlstore' ),
         'section'    => 'header_image',
-        'settings'   => 'display_header_image',
+        'settings'   => 'display_header_image_home',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_image_single_post', array(
+        'label'      => __( 'Display Header Image On Single Post', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'display_header_image_single_post',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_image_single_page', array(
+        'label'      => __( 'Display Header Image On Single Page', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'display_header_image_single_page',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_image_archives', array(
+        'label'      => __( 'Display Header Image On Archive Page', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'display_header_image_archives',
+        'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'display_header_image_shop', array(
+        'label'      => __( 'Display Header Image On Shop Page', 'jlstore' ),
+        'section'    => 'header_image',
+        'settings'   => 'display_header_image_shop',
         'type'       => 'checkbox'
     ) );
 

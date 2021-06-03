@@ -3,9 +3,23 @@ $display_searchbox = get_theme_mod( 'display_header_searchbox', true );
 $display_contact_icon = get_theme_mod( 'display_header_icon_1', true );
 $display_account_icon = get_theme_mod( 'display_header_icon_2', true );
 $display_cart_icon = get_theme_mod( 'display_header_icon_3', true );
-$display_header_image = get_theme_mod( 'display_header_image', true );
+$display_header_image = false;
 $header_image_text = get_theme_mod( 'header_image_text', 'Your Sample Text' );
 $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
+
+if ( is_home() ) {
+    $display_header_image = get_theme_mod( 'display_header_image_home', true );
+} else if ( is_archive() ) {
+    $display_header_image = get_theme_mod( 'display_header_image_archives', true );
+} else if ( is_single() ) {
+    $display_header_image = get_theme_mod( 'display_header_image_single_post', true );
+} else if ( is_page() ) {
+    $display_header_image = get_theme_mod( 'display_header_image_single_page', true );
+} else if ( function_exists( 'is_woocommerce' ) ) {
+    if ( is_woocommerce() ) {
+        $display_header_image = get_theme_mod( 'display_header_image_shop', true );
+    }
+}
 ?>
 
 <!DOCTYPE html>
