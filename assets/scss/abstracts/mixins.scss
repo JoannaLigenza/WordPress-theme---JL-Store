@@ -44,6 +44,13 @@
     }
 }
 
+@mixin display-flex($brkp) {
+    display: flex;
+    flex-direction: column;
+    @include mediaQuery($brkp) {
+        flex-direction: row;
+    }
+}
 
 @mixin close-button($color) {
     font-size: 1.5rem;

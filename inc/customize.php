@@ -161,6 +161,39 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_callback' => 'jlstore_sanitize_checkbox',
     ) );
 
+    //----- Sidebar
+
+    $wp_customize->add_setting( 'sidebar_position_home' , array(
+        'default'   => 'right',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_radio',
+    ) );
+
+    $wp_customize->add_setting( 'sidebar_position_single_post' , array(
+        'default'   => 'right',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_radio',
+    ) );
+
+    $wp_customize->add_setting( 'sidebar_position_single_page' , array(
+        'default'   => 'right',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_radio',
+    ) );
+
+    $wp_customize->add_setting( 'sidebar_position_archives' , array(
+        'default'   => 'right',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_radio',
+    ) );
+
+    $wp_customize->add_setting( 'sidebar_position_shop' , array(
+        'default'   => 'right',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'jlstore_sanitize_radio',
+    ) );
+
+
     //-----
 
 
@@ -221,35 +254,17 @@ function jlstore_customize_register( $wp_customize ) {
         'priority'   => 30,
     ) );
 
-    $wp_customize->add_section( 'front-page-layout' , array(
-        'title'      => __( 'Front Page Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 30,
-    ) );
-
-    $wp_customize->add_section( 'single-post-layout' , array(
-        'title'      => __( 'Single Post Layout', 'jlstore' ),
+    $wp_customize->add_section( 'sidebar' , array(
+        'title'      => __( 'Sidebar', 'jlstore' ),
         'panel' => 'appearance',
         'priority'   => 40,
     ) );
 
-    $wp_customize->add_section( 'single-page-layout' , array(
-        'title'      => __( 'Single Page Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 50,
-    ) );
-
-    $wp_customize->add_section( 'archive-layout' , array(
-        'title'      => __( 'Archive Layout', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 60,
-    ) );
-
-    $wp_customize->add_section( 'footer' , array(
-        'title'      => __( 'Footer', 'jlstore' ),
-        'panel' => 'appearance',
-        'priority'   => 70,
-    ) );
+    // $wp_customize->add_section( 'footer' , array(
+    //     'title'      => __( 'Footer', 'jlstore' ),
+    //     'panel' => 'appearance',
+    //     'priority'   => 70,
+    // ) );
 
     /*
     * CONTROLS
@@ -420,7 +435,67 @@ function jlstore_customize_register( $wp_customize ) {
         'type'       => 'checkbox'
     ) );
 
+    //----- Sidebar
+
+    $wp_customize->add_control( 'sidebar_position_home', array(
+        'label'      => __( 'Display Sidebar On Home page', 'jlstore' ),
+        'section'    => 'sidebar',
+        'settings'   => 'sidebar_position_home',
+        'type'       => 'radio',
+        'choices'    => array(
+            'left'  => 'Left side',
+            'right' => 'Right Side',
+            'none'  => 'None',
+        ),
+    ) );
+
+    $wp_customize->add_control( 'sidebar_position_single_post', array(
+        'label'      => __( 'Display Sidebar On Single Post', 'jlstore' ),
+        'section'    => 'sidebar',
+        'settings'   => 'sidebar_position_single_post',
+        'type'       => 'radio',
+        'choices'    => array(
+            'left'  => 'Left side',
+            'right' => 'Right Side',
+            'none'  => 'None',
+        ),
+    ) );
+
+    $wp_customize->add_control( 'sidebar_position_single_page', array(
+        'label'      => __( 'Display Sidebar On Single Page', 'jlstore' ),
+        'section'    => 'sidebar',
+        'settings'   => 'sidebar_position_single_page',
+        'type'       => 'radio',
+        'choices'    => array(
+            'left'  => 'Left side',
+            'right' => 'Right Side',
+            'none'  => 'None',
+        ),
+    ) );
     
+    $wp_customize->add_control( 'sidebar_position_archives', array(
+        'label'      => __( 'Display Sidebar On Archives Pages', 'jlstore' ),
+        'section'    => 'sidebar',
+        'settings'   => 'sidebar_position_archives',
+        'type'       => 'radio',
+        'choices'    => array(
+            'left'  => 'Left side',
+            'right' => 'Right Side',
+            'none'  => 'None',
+        ),
+    ) );
+
+    $wp_customize->add_control( 'sidebar_position_shop', array(
+        'label'      => __( 'Display Sidebar On Shop Pages', 'jlstore' ),
+        'section'    => 'sidebar',
+        'settings'   => 'sidebar_position_shop',
+        'type'       => 'radio',
+        'choices'    => array(
+            'left'  => 'Left side',
+            'right' => 'Right Side',
+            'none'  => 'None',
+        ),
+    ) );
 
 }
 add_action( 'customize_register', 'jlstore_customize_register' );

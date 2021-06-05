@@ -419,6 +419,49 @@ form[role=search] button[type=submit] {
   position: relative;
 }
 
+.flex-columns .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 30px 20px;
+}
+@media screen and (min-width: 992px) {
+  .flex-columns .content-wrapper {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 992px) {
+  .flex-columns .content-wrapper {
+    padding: 50px 50px 50px 50px;
+  }
+}
+@media screen and (min-width: 1780px) {
+  .flex-columns .content-wrapper {
+    padding: 50px 0 50px 0;
+  }
+}
+.flex-columns .column {
+  width: 100%;
+  padding: 50px 20px;
+}
+@media screen and (min-width: 992px) {
+  .flex-columns .column {
+    width: 330px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .flex-columns .column-left {
+    padding: 0 30px 0 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .flex-columns .column-right {
+    padding: 0 0 0 30px;
+  }
+}
+.flex-columns .main {
+  flex: 1;
+}
+
 .wrapper--small {
   max-width: 1680px;
 }
@@ -1062,6 +1105,32 @@ form[role=search] button[type=submit] {
   top: 10px;
   right: 10px;
   transition-duration: 0.7s;
+}
+
+.home-container {
+  padding: 20px 0;
+}
+@media screen and (min-width: 992px) {
+  .home-container {
+    padding: 50px 0;
+  }
+}
+.home-container .home-headers {
+  padding: 10px 20px 10px 20px;
+}
+@media screen and (min-width: 992px) {
+  .home-container .home-headers {
+    padding: 30px 50px 30px 50px;
+  }
+}
+@media screen and (min-width: 1780px) {
+  .home-container .home-headers {
+    padding: 30px 0 30px 0;
+  }
+}
+.home-container .home-header,
+.home-container .home-subheader {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

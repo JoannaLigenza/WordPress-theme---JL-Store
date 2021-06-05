@@ -134,6 +134,27 @@ function jlstore_widgets_init() {
 add_action( 'widgets_init', 'jlstore_widgets_init' );
 
 
+function jlstore_get_sidebar_position() {
+    $sidebar_position = 'none';
+    if ( is_single() ) {
+        $sidebar_position = get_theme_mod( 'sidebar_position_single_post', 'right' );
+    }
+    if ( is_page() ) {
+        $sidebar_position = get_theme_mod( 'sidebar_position_single_page', 'right' );
+    }
+    if ( is_archive() ) {
+        $sidebar_position = get_theme_mod( 'sidebar_position_archives', 'right' );
+    }
+    if ( is_home() ) {
+        $sidebar_position = get_theme_mod( 'sidebar_position_home', 'right' );
+    }
+    if ( function_exists( 'is_shop') ) {
+        $sidebar_position = get_theme_mod( 'sidebar_position_shop', 'right' );
+    }
+    return $sidebar_position;
+}
+
+
 // Pass PHP variables to CSS and add custom styles
 function jlstore_set_css_variables() {
     ?>
