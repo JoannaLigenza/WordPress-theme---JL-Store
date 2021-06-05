@@ -109,6 +109,12 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_callback' => 'jlstore_sanitize_checkbox',
     ) );
 
+    $wp_customize->add_setting( 'contact_icon_link' , array(
+        'default'   => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+
     //----- Menu
 
     $wp_customize->add_setting( 'menu_background_color' , array(
@@ -348,6 +354,8 @@ function jlstore_customize_register( $wp_customize ) {
         'type'       => 'checkbox'
     ) );
 
+    if ( function_exists( 'is_woocommerce()' ) ) :
+
     $wp_customize->add_control( 'display_header_icon_2', array(
         'label'      => __( 'Display Account Icon', 'jlstore' ),
         'section'    => 'header_icons',
@@ -360,6 +368,15 @@ function jlstore_customize_register( $wp_customize ) {
         'section'    => 'header_icons',
         'settings'   => 'display_header_icon_3',
         'type'       => 'checkbox'
+    ) );
+
+    endif;
+
+    $wp_customize->add_control( 'contact_icon_link', array(
+        'label'      => __( 'Contact Icon - Link', 'jlstore' ),
+        'section'    => 'header_icons',
+        'settings'   => 'contact_icon_link',
+        'type'       => 'url'
     ) );
 
     //----- Menu

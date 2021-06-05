@@ -3,6 +3,8 @@ $display_searchbox = get_theme_mod( 'display_header_searchbox', true );
 $display_contact_icon = get_theme_mod( 'display_header_icon_1', true );
 $display_account_icon = get_theme_mod( 'display_header_icon_2', true );
 $display_cart_icon = get_theme_mod( 'display_header_icon_3', true );
+$contact_icon_link = get_theme_mod( 'contact_icon_link', "#" );
+$contact_icon_link = empty( $contact_icon_link ) ? "#" : $contact_icon_link;
 $display_header_image = false;
 $header_image_text = get_theme_mod( 'header_image_text', 'Your Sample Text' );
 $full_menu = get_theme_mod( 'full_menu', false ) ? 'full-menu' : null;
@@ -68,21 +70,21 @@ if ( is_home() ) {
                     <?php endif; ?>
                     <div class="logo-container__col icons-wrapper">
                         <?php if( $display_contact_icon ) : ?>
-                            <a href="#" class="icon-link">
+                            <a href="<?php echo esc_url( $contact_icon_link ) ?>" class="icon-link">
                                 <div class="icon-container">
                                     <div class="phone-icon"></div>
                                 </div>
-                            
+                            </a>
                         <?php endif; ?>
-                        <?php if( $display_account_icon ) : ?>
-                            <a href="#" class="icon-link">
+                        <?php if( $display_account_icon && function_exists( 'is_woocommerce()' ) ) : ?>
+                            <a href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ) ?>" class="icon-link">
                                 <div class="icon-container">
                                     <div class="user-icon"></div>
                                 </div>
                             </a>
                         <?php endif; ?>
-                        <?php if( $display_cart_icon ) : ?>
-                            <a href="#" class="icon-link">
+                        <?php if( $display_cart_icon && function_exists( 'is_woocommerce()' ) ) : ?>
+                            <a href="<?php echo esc_url( wc_get_cart_url() ) ?>" class="icon-link">
                                 <div class="icon-container">
                                     <div class="cart-icon"></div>
                                 </div>
