@@ -31,10 +31,19 @@
         background-color: var(--header_bgcolor);
         padding: 10px 20px;
         @include mediaQuery($brkp-large) {
-            padding: 10px 30px 35px 30px;
+            padding: 10px 30px 0 30px;
         }
         @include mediaQuery($theme-width + 60px) {
-            padding: 10px 0 35px 0;
+            padding: 10px 0 0 0;
+        }
+
+        &--short {
+            @include mediaQuery($brkp-large) {
+                padding: 10px 30px 35px 30px;
+            }
+            @include mediaQuery($theme-width + 60px) {
+                padding: 10px 0 35px 0;
+            }
         }
 
         &__col {
@@ -211,8 +220,12 @@
 
     .menu-container {
         position: relative;
-        height: 1px;
+        height: auto;
         z-index: 5;
+
+        &--short {
+            height: 1px;
+        }
     }
 
     .menu-wrapper {
@@ -230,12 +243,18 @@
             height: auto;
             max-width: $theme-small-width;
             margin: 0 auto;
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            top: 25px;
+            left: 0;
             border-radius: 2px;
             z-index: 0;
+
+            &--absolute {
+                position: absolute;
+                top: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
             &--decorations {
                 &:before {
@@ -395,8 +414,8 @@
                 z-index: 90;
                 width: 300px;
                 box-shadow: 0px 3px 8px 0px $color-light-gray;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
                 overflow: hidden;
             }
         }

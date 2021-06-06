@@ -34,6 +34,92 @@ Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, flexible-heade
   transition-duration: 0.4s;
 }
 
+h1, .h1 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  margin: 30px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h1, .h1 {
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  margin: 30px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h2, .h2 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 2.2rem;
+  line-height: 2.7rem;
+  margin: 20px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h3, .h3 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+h4, .h4 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin: 20px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h4, .h4 {
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  margin: 10px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h5, .h5 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+h6, .h6 {
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  margin: 10px 0;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  h6, .h6 {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+}
+
+.home-container .home-headers--decorations .home-header {
+  border-radius: 2px;
+}
+
+.home-container .home-headers--decorations .home-subheader {
+  border-radius: 3px;
+}
+
 /***************************
 * Custom styles
 ****************************/
@@ -98,7 +184,7 @@ body {
   font-weight: 400;
   height: 100%;
   background-color: var(--bgcolor);
-  color: #2B2B2B;
+  color: var(--theme_primary_font_color);
 }
 
 div, main, section, aside, ul, ol, li, header, nav, article, a, span, h1, h2, h3, h4, h5, h6, p, form, input, textarea {
@@ -111,7 +197,7 @@ div, main, section, aside, ul, ol, li, header, nav, article, a, span, h1, h2, h3
 ***  Links  ***
 ****************************/
 a {
-  color: #2B2B2B;
+  color: var(--theme_primary_font_color);
   cursor: pointer;
 }
 a:hover:focus {
@@ -223,84 +309,6 @@ td, th {
   border: 1px solid #EBEBEB;
   padding: 1rem;
   text-align: left;
-}
-
-h1, .h1 {
-  font-size: 3rem;
-  line-height: 3.5rem;
-  margin: 30px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h1, .h1 {
-    font-size: 3.5rem;
-    line-height: 4rem;
-  }
-}
-
-h2, .h2 {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  margin: 30px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h2, .h2 {
-    font-size: 3rem;
-    line-height: 3.5rem;
-  }
-}
-
-h3, .h3 {
-  font-size: 2.2rem;
-  line-height: 2.7rem;
-  margin: 20px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h3, .h3 {
-    font-size: 2.5rem;
-    line-height: 3rem;
-  }
-}
-
-h4, .h4 {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  margin: 20px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h4, .h4 {
-    font-size: 2.2rem;
-    line-height: 2.7rem;
-  }
-}
-
-h5, .h5 {
-  font-size: 1.8rem;
-  line-height: 2.3rem;
-  margin: 10px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h5, .h5 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-  }
-}
-
-h6, .h6 {
-  font-size: 1.6rem;
-  line-height: 2.1rem;
-  margin: 10px 0;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  h6, .h6 {
-    font-size: 1.8rem;
-    line-height: 2.3rem;
-  }
 }
 
 p {
@@ -510,11 +518,21 @@ form[role=search] button[type=submit] {
 }
 @media screen and (min-width: 992px) {
   .header .logo-container {
-    padding: 10px 30px 35px 30px;
+    padding: 10px 30px 0 30px;
   }
 }
 @media screen and (min-width: 1980px) {
   .header .logo-container {
+    padding: 10px 0 0 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .header .logo-container--short {
+    padding: 10px 30px 35px 30px;
+  }
+}
+@media screen and (min-width: 1980px) {
+  .header .logo-container--short {
     padding: 10px 0 35px 0;
   }
 }
@@ -741,8 +759,11 @@ form[role=search] button[type=submit] {
 }
 .header .menu-container {
   position: relative;
-  height: 1px;
+  height: auto;
   z-index: 5;
+}
+.header .menu-container--short {
+  height: 1px;
 }
 .header .menu-wrapper {
   width: 100%;
@@ -761,12 +782,17 @@ form[role=search] button[type=submit] {
     height: auto;
     max-width: 1680px;
     margin: 0 auto;
+    position: relative;
+    top: 25px;
+    left: 0;
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .header .menu-wrapper--absolute {
     position: absolute;
     top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
-    z-index: 0;
   }
   .header .menu-wrapper--decorations:before {
     content: "";
@@ -922,8 +948,8 @@ form[role=search] button[type=submit] {
     z-index: 90;
     width: 300px;
     box-shadow: 0px 3px 8px 0px #EBEBEB;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
     overflow: hidden;
   }
 }
@@ -1116,21 +1142,63 @@ form[role=search] button[type=submit] {
   }
 }
 .home-container .home-headers {
-  padding: 10px 20px 10px 20px;
+  padding: 0 20px;
+  width: 100%;
 }
-@media screen and (min-width: 992px) {
-  .home-container .home-headers {
-    padding: 30px 50px 30px 50px;
-  }
+.home-container .home-headers--decorations {
+  position: relative;
+  margin: 20px 0 0 0;
 }
-@media screen and (min-width: 1780px) {
-  .home-container .home-headers {
-    padding: 30px 0 30px 0;
+.home-container .home-headers--decorations .home-header {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: max-content;
+  padding: 5px 20px;
+  background-color: var(--theme_primary_color);
+  color: var(--theme_secondary_font_color);
+}
+.home-container .home-headers--decorations .home-subheader {
+  padding: 30px 20px;
+  color: var(--theme_primary_color);
+}
+@media screen and (min-width: 768px) {
+  .home-container .home-headers--decorations .home-subheader {
+    padding: 40px;
   }
 }
 .home-container .home-header,
 .home-container .home-subheader {
+  margin: 0;
   text-align: center;
+  background-color: var(--theme_secondary_color);
+}
+@media screen and (min-width: 768px) {
+  .home-container .home-header,
+.home-container .home-subheader {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+.home-container .home-header {
+  padding: 30px 20px;
+}
+@media screen and (min-width: 768px) {
+  .home-container .home-header {
+    padding: 40px;
+  }
+}
+.home-container .home-subheader {
+  line-height: 2.6rem;
+  padding: 0 20px 30px 20px;
+}
+@media screen and (min-width: 768px) {
+  .home-container .home-subheader {
+    line-height: 3rem;
+    padding: 0 40px 40px 40px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

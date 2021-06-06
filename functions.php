@@ -171,6 +171,8 @@ function jlstore_set_css_variables() {
                 --menu_hover_bgcolor: <?php echo get_theme_mod( 'menu_hover_color', '#D5C2AA' ) ?>;
                 --theme_primary_color: <?php echo get_theme_mod( 'primary_color', '#C3A990' ) ?>;
                 --theme_secondary_color: <?php echo get_theme_mod( 'secondary_color', '#F8F3F0' ) ?>;
+                --theme_primary_font_color: <?php echo get_theme_mod( 'primary_font_color', '#282828' ) ?>;
+                --theme_secondary_font_color: <?php echo get_theme_mod( 'secondary_font_color', '#FFFFFF' ) ?>;
                 --header_image_url: url(<?php echo esc_url(get_custom_header()->url) ?>);
             }
 

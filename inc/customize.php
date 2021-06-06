@@ -154,6 +154,20 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_js_callback' => 'sanitize_hex_color',
     ) );
 
+    $wp_customize->add_setting( 'primary_font_color' , array(
+        'default'   => '#282828',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',
+    ) );
+
+    $wp_customize->add_setting( 'secondary_font_color' , array(
+        'default'   => '#FFFFFF',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'sanitize_js_callback' => 'sanitize_hex_color',
+    ) );
+
     $wp_customize->add_setting( 'display_decorations' , array(
         'default'   => true,
         'transport' => 'refresh',
@@ -426,6 +440,18 @@ function jlstore_customize_register( $wp_customize ) {
         'label'      => __( 'Secondary color', 'jlstore' ),
         'section'    => 'colors',
         'settings'   => 'secondary_color',
+    ) ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_font_color', array(
+        'label'      => __( 'Primary Font color', 'jlstore' ),
+        'section'    => 'colors',
+        'settings'   => 'primary_font_color',
+    ) ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'secondary_font_color', array(
+        'label'      => __( 'Secondary Font color', 'jlstore' ),
+        'section'    => 'colors',
+        'settings'   => 'secondary_font_color',
     ) ) );
 
     $wp_customize->add_control( 'display_decorations', array(
