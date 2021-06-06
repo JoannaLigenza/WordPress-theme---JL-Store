@@ -13,11 +13,8 @@
     }
 
     .column {
-        width: 100%;
-        padding: 50px 20px;
-        @include mediaQuery($brkp-large) {
-            width: 330px;
-        }
+        width: 330px;
+        padding: 50px 0;
     }
 
     .column-left {

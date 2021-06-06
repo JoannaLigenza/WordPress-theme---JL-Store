@@ -1,0 +1,40 @@
+.widget {
+    padding: 35px 6% 20px 6%;
+    margin: 0 0 55px 0;
+    background-color: var(--theme_secondary_color);
+    position: relative;
+    @extend %border-radius;
+
+    .widget-title {
+        background-color: var(--theme_primary_color);
+        color: var(--theme_secondary_font_color);
+        position: absolute;
+        top: -17px;
+        padding: 5px 10px;
+        width: 88%;
+        font-size: 1.8rem;
+        line-height: 2.3rem;
+        font-weight: $font-bold;
+        @extend %border-radius-smaller;
+        @include mediaQuery($brkp-large) {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    li {
+        list-style: none;
+        padding: 0;
+
+        a {
+            display: block;
+            padding: 5px 0;
+        }
+    }
+
+    a {
+        @extend %link-no-decoration;
+        @extend %hover-transition;
+        @include link-hover-color(var(--theme_primary_font_color));
+    }
+}

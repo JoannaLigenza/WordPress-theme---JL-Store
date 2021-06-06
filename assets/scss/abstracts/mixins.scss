@@ -28,6 +28,13 @@
     }
 }
 
+@mixin link-hover-color($color) {
+    color: $color;
+    &:hover {
+        color: var(--theme_primary_color);
+    }
+}
+
 @mixin image-wrapper($width, $height) {
     width: $width;
     height: $height;
@@ -186,9 +193,23 @@
 }
 
 %border-radius {
+    border-radius: 3px;
+}
+
+%border-radius-smaller {
     border-radius: 2px;
 }
 
-%border-radius-larger {
-    border-radius: 3px;
+%decorations-before {
+    content: '';
+    position: absolute;
+    background: var(--theme_primary_color);
+    z-index: -1;
+    transition: 0.4s;
+    height: calc(100% - 10px);
+    width: calc(100% + 14px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
 }

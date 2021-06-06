@@ -4,35 +4,11 @@
         padding: 50px 0;
     }
 
-    .home-headers {
+    .home-headers-wrapper {
         padding: 0 20px;
         width: 100%;
-
-        &--decorations {
-            position: relative;
-            margin: 20px 0 0 0;
-            .home-header {
-                position: absolute;
-                top: -25px;
-                left: 50%;
-                transform: translateX(-50%);
-                display: inline-block;
-                width: max-content;
-                padding: 5px 20px;
-                background-color: var(--theme_primary_color);
-                color: var(--theme_secondary_font_color);
-                @extend %border-radius;
-            }
-
-            .home-subheader {
-                padding: 30px 20px;
-                color: var(--theme_primary_color);
-                @extend %border-radius-larger;
-                @include mediaQuery($brkp-medium) {
-                    padding: 40px;
-                }
-            }
-        }
+        position: relative;
+        margin: 20px 0 0 0;
     }
 
     .home-header,
@@ -47,18 +23,37 @@
     }
 
     .home-header {
-        padding: 30px 20px;
-        @include mediaQuery($brkp-medium) {
-            padding: 40px;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        width: max-content;
+        padding: 5px 20px;
+        background-color: var(--theme_primary_color);
+        color: var(--theme_secondary_font_color);
+        @extend %border-radius-smaller;
+
+        &--decorations {
+            &:before {
+                @extend %decorations-before;
+            }
+        }
+
+        &:hover:before {
+            width: calc(100% + 10px);
+            transition: 0.4s;
         }
     }
 
     .home-subheader {
         line-height: 2.6rem;
-        padding: 0 20px 30px 20px;
+        padding: 30px 20px;
+        color: var(--theme_primary_color);
+        @extend %border-radius;
         @include mediaQuery($brkp-medium) {
+            padding: 40px;
             line-height: 3rem;
-            padding: 0 40px 40px 40px;
         }
     }
 }
