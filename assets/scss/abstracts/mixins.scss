@@ -213,3 +213,8 @@
     transform: translate(-50%, -50%);
     border-radius: 2px;
 }
+
+%decorations-before-hover {
+    width: calc(100% + 10px);
+    transition: 0.4s;
+}

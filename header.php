@@ -96,7 +96,7 @@ $show_header_image = get_header_image() && $display_header_image;
                     </div>
                 </div>
                 <div class="menu-container <?php echo $show_header_image ? "menu-container--short" : null ?>">
-                    <div class="menu-wrapper <?php echo display_decorations( 'menu-wrapper--decorations' ) ?> <?php echo $full_menu ?> <?php echo $show_header_image ? "menu-wrapper--absolute" : null ?>">
+                    <div class="menu-wrapper <?php echo jlstore_display_decorations( 'menu-wrapper--decorations' ) ?> <?php echo $full_menu ?> <?php echo $show_header_image ? "menu-wrapper--absolute" : null ?>">
                         <div class="mobile-top-bar desktop-hidden">
                             <img src="<?php echo esc_attr( get_theme_file_uri().'/assets/images/arrow-up-black.svg' ) ?>" alt="go back icon" class="mobile-close-button">
                         </div>
@@ -118,7 +118,7 @@ $show_header_image = get_header_image() && $display_header_image;
             <?php if ( $show_header_image ) : ?>
             <div class="header-image">
                 <div class="header-image__shadow"></div>
-                <div class="header-custom-text wrapper wrapper--small <?php echo display_decorations( 'header-custom-text--decorations' ) ?>">
+                <div class="header-custom-text wrapper wrapper--small <?php echo jlstore_display_decorations( 'header-custom-text--decorations' ) ?>">
                     <p><?php echo wp_kses_post( $header_image_text ) ?></p>
                 </div>
             </div>

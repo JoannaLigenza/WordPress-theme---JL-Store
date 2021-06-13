@@ -1,6 +1,6 @@
 <div class="content-wrapper wrapper--small">
     <?php if ( jlstore_get_sidebar_position() === 'left' ) : ?>
-    <aside class="column column-left">
+    <aside class="column column-left <?php echo display_decorations( 'column--decorations' ) ?>">
         <?php dynamic_sidebar( 'sidebar-left' ); ?>
     </aside>
     <?php endif; ?>
@@ -23,7 +23,7 @@
     </main>
 
     <?php if ( jlstore_get_sidebar_position() === 'right' ) : ?>
-    <aside class="column column-right">
+    <aside class="column column-right <?php echo display_decorations( 'column--decorations' ) ?>">
         <?php dynamic_sidebar( 'sidebar-right' ); ?>
     </aside>
     <?php endif; ?>

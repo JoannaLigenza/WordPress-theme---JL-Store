@@ -8,23 +8,26 @@
 .flex-columns {
     
     .content-wrapper {
-        @include display-flex($brkp-large);
+        @include display-flex($brkp-xlarge);
         @include padding(30px, 30px, 50px, 50px);
     }
 
     .column {
-        width: 330px;
+        width: 100%;
         padding: 50px 0;
+        @include mediaQuery($brkp-xsmall) {
+            width: 330px;
+        }
     }
 
     .column-left {
-        @include mediaQuery($brkp-large) {
+        @include mediaQuery($brkp-xlarge) {
             padding: 0 30px 0 0;
         }
     }
 
     .column-right {
-        @include mediaQuery($brkp-large) {
+        @include mediaQuery($brkp-xlarge) {
             padding: 0 0 0 30px;
         }
     }

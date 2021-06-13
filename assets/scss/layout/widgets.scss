@@ -38,3 +38,19 @@
         @include link-hover-color(var(--theme_primary_font_color));
     }
 }
+
+.column--decorations {
+    .widget {
+        z-index: 0;
+
+        .widget-title {
+            &:before {
+                @extend %decorations-before;
+            }
+
+            &:hover:before {
+                @extend %decorations-before-hover;
+            }
+        }
+    }
+}

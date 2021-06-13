@@ -175,6 +175,12 @@ function jlstore_customize_register( $wp_customize ) {
         'sanitize_callback' => 'jlstore_sanitize_checkbox',
     ) );
 
+    $wp_customize->add_setting( 'excerpt-length' , array(
+        'default'   => '55',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'absint',    // echo absint( 'some non-numeric string' );  -> returns 0
+    ) );
+
     //----- Sidebar
 
     $wp_customize->add_setting( 'sidebar_position_home' , array(
@@ -459,6 +465,13 @@ function jlstore_customize_register( $wp_customize ) {
         'section'    => 'general',
         'settings'   => 'display_decorations',
         'type'       => 'checkbox'
+    ) );
+
+    $wp_customize->add_control( 'excerpt-length', array(
+        'label'      => __( 'Choose Excerpt Length', 'jlstore' ),
+        'section'    => 'general',
+        'settings'   => 'excerpt-length',
+        'type'       => 'number',
     ) );
 
     //----- Sidebar

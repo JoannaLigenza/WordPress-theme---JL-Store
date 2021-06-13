@@ -190,7 +190,26 @@ function jlstore_set_css_variables() {
 }
 add_action('wp_head', 'jlstore_set_css_variables');
 
-function display_decorations($class) {
+
+// Set post excerpt length
+function jlstore_custom_excerpt_length( $length ) {
+    $excerptLength =  is_admin() ? $length : absint( get_theme_mod( 'excerpt-length', '55' ) );
+    return $excerptLength;
+}
+add_filter( 'excerpt_length', 'jlstore_custom_excerpt_length');
+
+function jlstore_excerpt_more( $more ) {
+    $excerptLength =  is_admin() ? $more : absint( get_theme_mod( 'excerpt-length', '55' ) );
+    if ($excerptLength === 0) {
+        return '';
+    } else {
+        return ' ...';
+    }
+}
+add_filter( 'excerpt_more', 'jlstore_excerpt_more' );
+    
+
+function jlstore_display_decorations($class) {
     $display_decorations = get_theme_mod( 'display_decorations', true );
     if ( $display_decorations ) {
         return $class;

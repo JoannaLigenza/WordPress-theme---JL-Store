@@ -41,8 +41,7 @@
         }
 
         &:hover:before {
-            width: calc(100% + 10px);
-            transition: 0.4s;
+            @extend %decorations-before-hover;
         }
     }
 
